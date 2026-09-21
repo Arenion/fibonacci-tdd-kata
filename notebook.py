@@ -14,7 +14,12 @@ def _():
 
 @app.function
 def fibonnaci(a: int) -> int:
-    return "temp"
+    if a==0:
+        return 0
+    elif a == 1:
+        return 1
+    else:
+        return fibonnaci(a-2)+fibonnaci(a-1)
 
 
 @app.cell
@@ -33,7 +38,7 @@ def test_fibo_2():
 
 @app.cell
 def test_fibo_3():
-    assert fibonnaci(13)==13
+    assert fibonnaci(7)==13
     return
 
 
