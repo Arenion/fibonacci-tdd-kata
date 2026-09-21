@@ -12,32 +12,39 @@ def _():
     return
 
 
-@app.function
-def fibonnaci(a: int) -> int:
-    if a==0:
-        return 0
-    elif a == 1:
-        return 1
-    else:
-        return fibonnaci(a-2)+fibonnaci(a-1)
+@app.cell
+def _():
+    fibodict={0:0,1:1}
+    def fibonnaci(a: int) -> int:
+        if not isinstance(a, int) or a<0:
+            raise ValueError("fibonnaci, the function that calculate the value of fibonnaci of an integer, expect a positive integer")
+        if a in fibodict:
+            return fibodict[a]
+        else:
+            newresult= fibonnaci(a-2)+fibonnaci(a-1)
+            fibodict[a]= newresult
+            return newresult
+
+
+    return (fibonnaci,)
 
 
 @app.cell
-def test_fibo_1():
+def test_fibo_1(fibonnaci):
     assert fibonnaci(0)==0
 
     return
 
 
 @app.cell
-def test_fibo_2():
+def test_fibo_2(fibonnaci):
     assert fibonnaci(1)==1
 
     return
 
 
 @app.cell
-def test_fibo_3():
+def test_fibo_3(fibonnaci):
     assert fibonnaci(7)==13
     return
 
