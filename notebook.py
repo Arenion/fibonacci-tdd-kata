@@ -9,6 +9,16 @@ def _():
     import marimo as mo
     import pytest as pt
 
+    return (mo,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Main Function
+
+    main fibonacci function which we use, as well as a dictionary that stores value so that we do not waste time calculating them again
+    """)
     return
 
 
@@ -27,6 +37,15 @@ def _():
 
 
     return (fibonnaci,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #Tests
+    list of the test, each in a different cell so that pytest recognize them as different tests
+    """)
+    return
 
 
 @app.cell
@@ -67,6 +86,32 @@ def _():
         
     #     ]
     # )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ##Try it yourself!
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+    n_input = mo.ui.number(start = 0,stop = 100000000)
+    n_input
+    return (n_input,)
+
+
+@app.cell
+def _(fibonnaci, mo, n_input):
+    try:
+        result = fibonnaci(n_input.value)
+        output = mo.md(f"`fizzbuzz({n_input.value})` → **{result}**")
+    except ValueError as e:
+        output = mo.md(f"⚠️ Error: {e}")
+    output
     return
 
 
