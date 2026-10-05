@@ -14,6 +14,7 @@ def test_parser_accepts_range():
     assert args.start == 1
     assert args.end == 5
 
+
 def test_main_prints_single_value(monkeypatch, capsys):
     monkeypatch.setattr("sys.argv", ["fibonacci-kata", "3"])
     main()
