@@ -15,19 +15,19 @@ def test_parser_accepts_range():
     assert args.end == 5
 
 def test_main_prints_single_value(monkeypatch, capsys):
-    monkeypatch.setattr("sys.argv", ["fizzbuzz-kata", "15"])
+    monkeypatch.setattr("sys.argv", ["fibonacci-kata", "3"])
     main()
-    assert capsys.readouterr().out.strip() == "FizzBuzz"
+    assert capsys.readouterr().out.strip() == "2"
 
 
 def test_main_prints_range(monkeypatch, capsys):
-    monkeypatch.setattr("sys.argv", ["fizzbuzz-kata", "--start", "1", "--end", "5"])
+    monkeypatch.setattr("sys.argv", ["fibonacci-kata", "--start", "1", "--end", "5"])
     main()
     lines = capsys.readouterr().out.strip().splitlines()
-    assert lines == ["1", "2", "Fizz", "4", "Buzz"]
+    assert lines == ["1", "1", "2", "3", "5"]
 
 
 def test_main_requires_an_argument(monkeypatch):
-    monkeypatch.setattr("sys.argv", ["fizzbuzz-kata"])
+    monkeypatch.setattr("sys.argv", ["fibonacci-kata"])
     with pytest.raises(SystemExit):
         main()
