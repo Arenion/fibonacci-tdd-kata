@@ -19,8 +19,10 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "marimo>=0.24.2",
+    "mypy>=2.4.0",
     "pytest>=9.1.1",
-    "ruff>=0.16.8",
+    "ruff>=0.6",
+    "pytest-cov">="8.0",
 ]
 
 [tool.pytest.ini_options]
