@@ -1,7 +1,7 @@
 # tests/test_cli.py
 
 import pytest
-from fizzbuzz_kata.cli import build_parser, main
+from fibonacci_kata.cli import build_parser, main
 
 
 def test_parser_accepts_single_number():
