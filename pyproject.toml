@@ -10,8 +10,8 @@ requires-python = ">=3.11"
 dependencies = []
 
 [project.scripts]
-fibonacci-tdd-kata = "fibonacci_tdd_kata:main"
-
+fibonacci-tdd-kata = "fibonacci_kata:main"
+fibonacci-kata = "fibonacci_kata.cli:main"
 [build-system]
 requires = ["uv_build>=0.12.17,<0.13.0"]
 build-backend = "uv_build"
@@ -30,3 +30,27 @@ pythonpath = ["src"]
 testpaths = ["tests"]
 
 
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]   # pyflakes, pycodestyle, isort, pyupgrade, bugbear
+
+
+[tool.ruff.lint.per-file-ignores]
+# marimo cells intentionally end on a bare expression to define what the
+# cell displays — that pattern is exactly what flake8-bugbear's B018
+# ("useless expression") flags, so it's disabled for notebook files.
+"notebooks/*.py" = ["B018"]
+
+[tool.mypy]
+strict = true
+files = ["src"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
