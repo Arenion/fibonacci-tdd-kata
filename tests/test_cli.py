@@ -1,6 +1,8 @@
 # tests/test_cli.py
 
-from fizzbuzz_kata.cli import build_parser
+import pytest
+from fizzbuzz_kata.cli import build_parser, main
+
 
 def test_parser_accepts_single_number():
     args = build_parser().parse_args(["15"])

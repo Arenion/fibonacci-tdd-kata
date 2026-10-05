@@ -1,7 +1,10 @@
 # src/fizzbuzz_kata/cli.py
 # """Command-line interface for fizzbuzz_kata."""
 import argparse
+
 from fibonacci_kata.core import fibonnaci
+
+
 def build_parser() -> argparse.ArgumentParser:
         parser = argparse.ArgumentParser(
             prog="fibonacci-kata",
@@ -24,5 +27,5 @@ def main() -> None:
         print(fibonnaci(args.n))
     else:
          parser.error("Provide either a single number, or --start and --end.")
-if __name__ == "main":
+if __name__ == "__main__":
      main()
